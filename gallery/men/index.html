@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    img.photo {
+      width: 100%;
+      height: auto;
+      max-width: 600px; /* така што на поголем екран не е премногу широко */
+      display: block;
+      margin-bottom: 10px;
+      object-fit: contain;
+      border-radius: 4px;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    img.photo:active {
+      opacity: 0.9;
+      transform: scale(0.99);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="gallery"></div>
+
+  <script>
+    const imageCount = 9; // промени ако имаш повеќе/помалку
+    const galleryDiv = document.getElementById("gallery");
+
+    for (let i = 1; i <= imageCount; i++) {
+      const img = document.createElement("img");
+      img.src = `photos/${i}.png`;
+      img.className = "photo";
+      img.loading = "lazy";
+      galleryDiv.appendChild(img);
+    }
+  </script>
+
+</body>
+</html>
